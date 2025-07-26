@@ -31,4 +31,26 @@ public class JobRepository {
         }
         return null;
     }
+
+    public void updateJob(JobPost jobPost) {
+        for(JobPost jobPost1:jobPosts){
+            if(jobPost.getPostId()==jobPost1.getPostId()){
+                jobPost1.setPostId(jobPost.getPostId());
+                jobPost1.setPostDesc(jobPost.getPostDesc());
+                jobPost1.setPostProfile(jobPost.getPostProfile());
+                jobPost1.setReqExperience(jobPost.getReqExperience());
+                jobPost1.setPostTechStack(jobPost.getPostTechStack());
+            }
+        }
+    }
+
+    public String deleteJob(int id) {
+        for(JobPost jobPost1:jobPosts){
+            if(id==jobPost1.getPostId()){
+                jobPosts.remove(jobPost1);
+                return "removed successfully";
+            }
+        }
+        return "No such job Found";
+    }
 }
